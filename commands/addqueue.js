@@ -11,6 +11,7 @@ module.exports = {
     if (!result.hasTracks()) return message.reply('❌ Nessun risultato trovato.');
 
     const queue = await client.player.nodes.create(channel);
+
     try {
       if (!queue.connection) await queue.connect(channel);
     } catch {
@@ -19,6 +20,9 @@ module.exports = {
     }
 
     queue.addTrack(result.tracks[0]);
+
+
+
     message.channel.send(`➕ Aggiunto in coda: **${result.tracks[0].title}**`);
   }
 };
